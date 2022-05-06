@@ -46,6 +46,9 @@ namespace LinqTutorial
             //GroupBy.QuerySyntax.Run();
             //Joins.QuerySyntax.Run();
 
+            //OTHERS
+            //DotNet6Improvements.Run();
+
             Console.ReadKey();
         }
     }
