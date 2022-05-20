@@ -102,7 +102,7 @@ namespace ExercisesSolutions
 
             public override string ToString()
             {
-                return $"{Name} (House:{HouseId}) studies {string.Join(", ", SubjectsIds)}";
+                return $"{Name} (House:{HouseId})";
             }
         }
 
