@@ -19,7 +19,7 @@ namespace ExercisesSolutions
         //Coding Exercise 2
         public static string BuildTree(int levels)
         {
-            return string.Join("\n", Enumerable.Range(1, levels)
+            return string.Join(Environment.NewLine, Enumerable.Range(1, levels)
                 .Select(level =>
                 string.Join("", Enumerable.Repeat("*", level))));
         }

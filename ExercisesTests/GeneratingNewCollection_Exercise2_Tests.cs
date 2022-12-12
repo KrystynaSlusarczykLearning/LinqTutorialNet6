@@ -10,8 +10,7 @@ namespace ExercisesTests
         [Test]
         public void FiveLevels()
         {
-            var result = GeneratingNewCollection.BuildTree(5)
-                .Replace("\n", Environment.NewLine);
+            var result = GeneratingNewCollection.BuildTree(5);
             var expectedResult = @"*
 **
 ***

@@ -43,10 +43,12 @@ namespace Exercises
         ****
         *****"
 
-        This tree is built of 5 levels, each consisting of '*' characters and ending 
-        with the "\n" newline symbol. This result is equivalent this string: 
-        
-        "*\n**\n***\n****\n*****"
+        Remember that to get the new line character, 
+        you can use the Environment.NewLine property. 
+        It will return "\n" when running on Unix systems, 
+        and "\r\n" when running on Windows (the new line symbol
+        is different for those two systems). 
+        This way, no matter where your code is run, it will work correctly.
 
          */
         public static string BuildTree(int levels)
