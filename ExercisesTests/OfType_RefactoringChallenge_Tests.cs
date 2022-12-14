@@ -42,6 +42,18 @@ namespace ExercisesTests
         }
 
         [Test]
+        public void EmptyCollection()
+        {
+            var input = new object[]
+            {
+            };
+
+            var result = OfType.GetTheLatestDate(input);
+            var resultAsString = result.HasValue ? result.Value.ToString("yyyy/MM/dd") : "null";
+            Assert.Null(result, $"Expected result for empty collection is null, but was {resultAsString}");
+        }
+
+        [Test]
         public void DateTimeIsPresent_Refactored()
         {
             var input = new object[]
@@ -73,6 +85,18 @@ namespace ExercisesTests
             var result = OfType.GetTheLatestDate_Refactored(input);
             var resultAsString = result.HasValue ? result.Value.ToString("yyyy/MM/dd") : "null";
             Assert.Null(result, $"Expected result for input (null,  1, 'THERE') is null, but was {resultAsString}");
+        }
+
+        [Test]
+        public void EmptyCollection_Refactored()
+        {
+            var input = new object[]
+            {
+            };
+
+            var result = OfType.GetTheLatestDate_Refactored(input);
+            var resultAsString = result.HasValue ? result.Value.ToString("yyyy/MM/dd") : "null";
+            Assert.Null(result, $"Expected result for empty collection is null, but was {resultAsString}");
         }
     }
 }
