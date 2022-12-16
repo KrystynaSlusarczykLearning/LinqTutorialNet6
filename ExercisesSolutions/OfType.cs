@@ -21,8 +21,7 @@ namespace ExercisesSolutions
         //Refactoring challenge
         public static DateTime? GetTheLatestDate_Refactored(IEnumerable<object> objects)
         {
-            var dates = objects.OfType<DateTime>();
-            return dates.Any() ? dates.Max() : (DateTime?)null;
+            return objects.OfType<DateTime?>().Max();
         }
 
         //do not modify this method
