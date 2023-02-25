@@ -48,7 +48,7 @@ namespace ExercisesTests
         }
 
         [Test]
-        public void NonEmpty_NoMarks()
+        public void NonEmpty_NoMarksAtAll()
         {
             var students = new List<Student>
             {
@@ -62,6 +62,25 @@ namespace ExercisesTests
             catch (Exception ex)
             {
                 Assert.Fail($"If no student has any marks, the result shall be 0. Exception message: {ex.Message}");
+            }
+        }
+
+        [Test]
+        public void NonEmpty_NoMarks()
+        {
+            var students = new List<Student>
+            {
+                new Student {Marks = new List<int> {2,4,5}},
+                new Student {Marks = new List<int> {}},
+            };
+            try
+            {
+                var result = Average.MaxAverageOfMarks(students);
+                Assert.AreEqual(3.66, result, 0.1, $"For students with marks (2,4,5) and other with no marks at all, max average mark is 3.66.");
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"For students with marks (2,4,5) and other with no marks at all, max average mark is 3.66. Exception message: {ex.Message}");
             }
         }
     }
