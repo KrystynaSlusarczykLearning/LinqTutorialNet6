@@ -41,7 +41,7 @@ namespace ExercisesTests
             };
 
             var result = Take.GetGivenPercentOfHeaviestPets(pets, 20);
-            var expectedResult = new[] { pets[3] };
+            var expectedResult = new[] { pets[4] };
             CollectionAssert.AreEquivalent(expectedResult, result);
         }
 
