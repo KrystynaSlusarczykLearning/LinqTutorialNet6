@@ -122,17 +122,17 @@ namespace Exercises
         public class House
         {
             public int OwnerId { get; }
-            public string Adderss { get; }
+            public string Address { get; }
 
-            public House(int ownerId, string adderss)
+            public House(int ownerId, string address)
             {
                 OwnerId = ownerId;
-                Adderss = adderss;
+                Address = address;
             }
 
             public override string ToString()
             {
-                return $"(OwnerId: {OwnerId}) {Adderss}";
+                return $"(OwnerId: {OwnerId}) {Address}";
             }
         }
 
