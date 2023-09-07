@@ -11,8 +11,7 @@ namespace Exercises
         //which will count all words longer than 10 letters.
         public static int CountAllLongWords(IEnumerable<string> words)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return words.Count(w => w.Length > 10);
         }
 
         //Coding Exercise 2
@@ -30,16 +29,17 @@ namespace Exercises
          */
         public static bool AreThereFewerOddThanEvenNumbers(IEnumerable<int> numbers)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            var evenNumbers = numbers.Count(n => n % 2 == 0);
+            var oddNumbers = numbers.Count() - evenNumbers;
+
+            return oddNumbers < evenNumbers;
         }
 
         //Refactoring challenge
         //TODO implement this method
         public static bool IsAnySequenceTooLong_Refactored(IEnumerable<IEnumerable<int>> numberSequences, int maxLength)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return numberSequences.Any(ns => ns.Count() > maxLength);
         }
 
         //do not modify this method

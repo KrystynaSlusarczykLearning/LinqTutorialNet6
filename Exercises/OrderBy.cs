@@ -16,8 +16,10 @@ namespace Exercises
         public static IEnumerable<string> OrderFromLongestToShortest(
             IEnumerable<string> words)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            // Below is wrong but initially passed; added a parameterized test to cover the false positive
+            // return words.OrderByDescending(a => a);
+            
+            return words.OrderByDescending(x => x.Length); // x is a string
         }
 
         //Coding Exercise 2
@@ -32,16 +34,24 @@ namespace Exercises
         public static IEnumerable<int> FirstEvenThenOddDescending(
             IEnumerable<int> numbers)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            var n1 = numbers.OrderBy(num => num);  // lesser comes before greater 
+            var f1 = numbers.OrderBy(num => num%2 == 0); // odd numbers come first
+
+            return numbers.OrderByDescending(num => num%2 == 0).ThenByDescending(num => num);
         }
+
+
+/*     TODO: Do the above with comparator method
+ * private bool CompareEven(IEnumerable<int>)
+        { 
+            return 
+        } */
 
         //Refactoring challenge
         //TODO implement this method
         public static IEnumerable<DateTime> OrderByMonth_Refactored(List<DateTime> dates)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return dates.OrderBy(d => d.Month);
         }
 
         //do not modify this method

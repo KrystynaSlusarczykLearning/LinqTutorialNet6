@@ -17,6 +17,19 @@ namespace ExercisesTests
         }
 
         [Test]
+        [TestCase(new[] { "bb", "a", "ccc" }, new[] { "ccc", "bb", "a" })]
+        [TestCase(new[] { "bb", "aaaaa", "ccc" }, new[] { "aaaaa", "ccc", "bb" })]
+        public void ShallOrderFromLongestToShortest_TCs(string[] words, string[] expectedResult)
+        {
+            var firstWord = words[0];
+            var result = OrderBy.OrderFromLongestToShortest(words);
+
+            CollectionAssert.AreEqual(expectedResult, result);
+            Assert.AreEqual(firstWord, words[0], "The order of the original collection should not be changed");
+        }
+
+
+        [Test]
         public void ShallNotChangeAnything_IfAlreadyOrdered()
         {
             var words = new[] { "ccc", "bb", "a" };

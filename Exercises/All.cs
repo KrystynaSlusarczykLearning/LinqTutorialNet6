@@ -11,8 +11,7 @@ namespace Exercises
         //which checks if all numbers in the collection are divisible by 10.
         public static bool AreAllNumbersDivisibleBy10(int[] numbers)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return numbers.All(n => n % 10 == 0);
         }
 
         //Coding Exercise 2
@@ -20,16 +19,31 @@ namespace Exercises
         //if all Pets in the collection are of the same PetType.
         public static bool AreAllPetsOfTheSameType(IEnumerable<Pet> pets)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            //var firstPetType = pets.FirstOrDefault().PetType;
+            //return pets.All(pet => pet.PetType == firstPetType);
+
+            //return pets.All(pet => pet.PetType == PetType.Cat) 
+            //    || pets.All(pet => pet.PetType == PetType.Dog)
+            //    || pets.All(pet => pet.PetType == PetType.Fish);
+
+            // Instructor has more extensible answer (if PetType enum changes)
+            var allPetTypesArray = Enum.GetValues(typeof(PetType));
+            var allPetTypes = allPetTypesArray.Cast<PetType>();
+
+            var allPetsOfSameType = allPetTypes.Any(petType => pets.All(pet => pet.PetType == petType));
+
+            return allPetsOfSameType;
         }
 
         //Refactoring challenge
-        //TODO implement this method
         public static bool AreAllWordsOfTheSameLength_Refactored(List<string> words)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            //var firstLength = words?.FirstOrDefault()?.Length;
+            //return words.Count == 0 || words.All(word => word.Length == firstLength);
+
+            // Better answer below. I hadn't noticed  input was a List; therefore I can address elements in the array
+            //  All() will return true on an empty list!
+            return words.All(w => w.Length == words[0].Length);
         }
 
         //do not modify this method
