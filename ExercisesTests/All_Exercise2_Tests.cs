@@ -26,6 +26,21 @@ namespace ExercisesTests
                 $"and all those pets are of the same type: {EnumerableToString(pets)}");
         }
 
+        [TestCase(PetType.Dog)]
+        [TestCase(PetType.Cat)]
+        [TestCase(PetType.Fish)]
+        public void AllAreOfTheSameType_SinglePet(PetType petType)
+        {
+            IEnumerable<Pet> pets = new[]
+            {
+                new Pet(4, "Taiga", petType, 35f)
+            };
+
+            Assert.True(All.AreAllPetsOfTheSameType(pets),
+                $"The test failed because the result of the AreAllPetsOfTheSameType was False," +
+                $" and all those pets are of the same type: {string.Join(", ", pets)}");
+        }
+
         [Test]
         public void AreOfDifferentTypes()
         {
