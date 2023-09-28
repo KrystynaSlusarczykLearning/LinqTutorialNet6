@@ -1,10 +1,10 @@
 # LinqTutorial
 
-Hello! 
+I'm Stephen, leveraging Krystyna's excellent LINQ tutorial. The below is from README on her repository, which is part of her "LINQ Tutorial: Master the Key C# Library" course, 
+which you can find under this link: 
+https://www.udemy.com/course/linq-tutorial-master-the-key-csharp-library/?referralCode=384B340D233F12F6A498
 
-My name is Krystyna and welcome to my GitHub.
-
-This repository is part of my  "LINQ Tutorial: Master the Key C# Library" course, which you can find under this link: https://www.udemy.com/course/linq-tutorial-master-the-key-csharp-library/?referralCode=384B340D233F12F6A498
+## BELOW IS FROM Krystyna's repo:
 
 ## FAQ:
 
