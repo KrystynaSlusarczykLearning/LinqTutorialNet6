@@ -91,6 +91,18 @@ namespace Exercises
             }
         }
 
+        public class Pet_ : Pet, IComparable<Pet>
+        {
+            public Pet_(int id, string name, PetType petType, float weight) : base(id, name, petType, weight)
+            {
+            }
+
+            public int CompareTo(Pet other)
+            {
+                return PetType.CompareTo(other.PetType); // Choose a class property with which to compare
+            }
+        }
+
         public class Pet
         {
             public int Id { get; }

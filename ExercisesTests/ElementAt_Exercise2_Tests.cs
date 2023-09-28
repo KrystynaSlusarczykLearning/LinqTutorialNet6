@@ -37,5 +37,15 @@ namespace ExercisesTests
             var result = ElementAt.FormatPetDataAtIndex(pets, 0);
             Assert.AreEqual("Pet data is missing for index 0", result, $"For a list of one pet named of null value and for index 0, the result should be 'Pet data is missing for index 0'");
         }
+
+        [Test]
+        public void PetsListIsNull()
+        {
+            List<Pet> pets = null;
+
+            var result = ElementAt.FormatPetDataAtIndex(pets, 0);
+            Assert.AreEqual("Pet data is missing for index 0", result, $"For a null list, the result should be 'Pet data is missing for index 0'");
+        }
+
     }
 }

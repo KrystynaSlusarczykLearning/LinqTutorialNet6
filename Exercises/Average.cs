@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Exercises
 {
@@ -23,9 +24,18 @@ namespace Exercises
         */
         public static float? AverageSnowFall(SnowFallData snowFallData)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
-        }
+            // NOTE!!! For the Udemy coding challenges, use "== null" instead of "is null" - forgot which version of C# that
+            //  came in but not supported by compiler. Also, if returning null, typecast it ie (float?)null
+
+            if (snowFallData is null
+          || snowFallData.MonthlySnowFallDataItems is null
+          || snowFallData.MonthlySnowFallDataItems.Count() != 12)
+            {
+                return (float?)null;
+            }
+
+            return snowFallData.MonthlySnowFallDataItems.Average(m => m.SnowfallInCentimeters);
+       }
 
         //Coding Exercise 2
         /*
@@ -48,8 +58,24 @@ namespace Exercises
          */
         public static double MaxAverageOfMarks(IEnumerable<Student> students)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            /* My first attempt:
+
+            if (students == null 
+                || students.Count() == 0
+                || students.All(s => s.Marks.Count() == 0)) { return 0; }
+
+
+            return students.Max(s => 
+            {
+                if (s.Marks.Count() == 0) return 0;
+                else return s.Marks.Average(m => m);
+            }); */
+
+            // Note I didn't need the "m => m", probably would have if needed to access property
+            return students.Any() ? 
+                   students.Max(s => s.Marks.Any() ? 
+                                     s.Marks.Average() : 0)
+                   : 0;
         }
 
         //Refactoring challenge
@@ -57,8 +83,18 @@ namespace Exercises
         public static float CalculateAverageHeight_Refactored(
             List<float?> heights, float defaultIfNull)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            /* First draft
+            if (heights == null || !heights.Any()) return 0;
+            
+            return heights.Average(h => h == null ? defaultIfNull : (float)h); 
+
+            // Second draft
+            return heights == null || !heights.Any() ? 0 :
+                   heights.Average(h => h == null ? defaultIfNull : (float)h); // Not sure why compiler complains here, but not below...*/
+
+            // And finally, using null coalescing operator ?? to make it even more compact...
+            return heights == null || !heights.Any() ? 0 :
+                   heights.Average(h => h ?? defaultIfNull); 
         }
 
         //do not modify this method
@@ -99,6 +135,25 @@ namespace Exercises
         {
             public int Month { get; set; }
             public float SnowfallInCentimeters { get; set; }
+        }
+
+        // Trying something below: haven't tested with real data yet, wanted to see this compile
+        public class SnowFallDataExtended
+        {
+            public int[] Years { get; set; }
+            public List<List<MonthlySnowFallData>> MonthlySnowFallDataItemsForYear { get; set; }
+        }
+
+        public static float? AverageMonthlySnowFallOverMultipleYears(SnowFallDataExtended snowFallDataExtended)
+        {
+            if (snowFallDataExtended is null
+          || snowFallDataExtended.MonthlySnowFallDataItemsForYear is null
+          || snowFallDataExtended.MonthlySnowFallDataItemsForYear.Count() != 12)
+            {
+                return null;
+            }
+
+            return snowFallDataExtended.MonthlySnowFallDataItemsForYear.Average(m => m.Average(s => s.SnowfallInCentimeters));
         }
     }
 }

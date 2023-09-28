@@ -19,8 +19,26 @@ namespace Exercises
          */
         public static string FindFirstNameInTheCollection(IEnumerable<string> words)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            // My 1st solution - don't think this is what she had in mind as we haven't done "Skip" yet
+            //return words.FirstOrDefault(w =>
+            //{
+            //    return w.Count() > 1 
+            //        && Char.IsUpper(w[0])
+            //        && w.Skip(1).All(c => Char.IsLower(c));
+            //});
+
+            // Aha! One detail, as words is a collection of strings, could have used Length property (cool)
+            // To verify other chars lower case, she simply counted uppercase chars and expects 1
+            // To verify first char is Upper, she used First instead of treating the string as an array
+            return words.FirstOrDefault(w =>
+            {
+                return w.Length > 1
+                    && Char.IsUpper(w.First())  
+                    && w.Count(c => Char.IsUpper(c)) == 1;
+            });
+
+
+
         }
 
         //Coding Exercise 2
@@ -32,16 +50,15 @@ namespace Exercises
          */
         public static Person GetYoungest(IEnumerable<Person> people)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            return people.OrderBy(p => p.DateOfBirth).LastOrDefault();
         }
 
         //Refactoring challenge
-        //TODO implement this method
         public static Person FindOwnerOf_Refactored(Pet pet, IEnumerable<Person> people)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            // First solution, I used "Where" when it wasn't necessary
+            //return people.Where(p => p.Pets.Contains(pet)).FirstOrDefault();
+            return people.FirstOrDefault(p => p.Pets.Contains(pet));
         }
 
         //do not modify this method
