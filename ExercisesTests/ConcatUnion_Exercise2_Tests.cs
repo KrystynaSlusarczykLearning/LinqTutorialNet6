@@ -25,6 +25,15 @@ namespace ExercisesTests
         }
 
         [Test]
+        public void KittenTest()
+        {
+            var input = "Kit__ten";
+            var result = ConcatUnion.CleanWord(input);
+            var expectedResult = "Kitten_";
+            Assert.AreEqual(expectedResult, result, $"For input '{input}' the result shall be '{expectedResult}', but it was '{result}'");
+        }
+
+        [Test]
         public void EmptyInputTest()
         {
             var input = "";
