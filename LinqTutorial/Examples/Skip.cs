@@ -54,8 +54,8 @@ namespace LinqTutorial
             Printer.Print(skippedWhileHeavierThan30, nameof(skippedWhileHeavierThan30));
 
             //Skip and Take are often used together
-            //for example, let's say we want to access all Pets
-            //except the 3rd, 4th and 5th pet in the collection
+            //for example, let's say we want to access only
+            //the 3rd, 4th and 5th pet in the collection
             var thirdFourthAndFifthPet = Data.Pets.Skip(2).Take(3);
             Printer.Print(thirdFourthAndFifthPet, nameof(thirdFourthAndFifthPet));
         }
