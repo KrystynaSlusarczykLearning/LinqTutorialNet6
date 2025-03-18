@@ -93,12 +93,12 @@ namespace LinqTutorial.MethodSyntax
             //range operator
             //before .NET 6 if we wanted, for example, to take elements between 
             //index 2 and 6 from a collection, we needed to do this:
-            var secondToSixthBeforeNet6 = numbers.Skip(2).Take(4);
-            Printer.Print(secondToSixthBeforeNet6, nameof(secondToSixthBeforeNet6));
+            var betweenIndexes2To6BeforeNet6 = numbers.Skip(2).Take(4);
+            Printer.Print(betweenIndexes2To6BeforeNet6, nameof(betweenIndexes2To6BeforeNet6));
 
             //with .NET 6, we can use the range operator
-            var secondToSixth = numbers.Take(2..6);
-            Printer.Print(secondToSixth, nameof(secondToSixth));
+            var betweenIndexes2To6 = numbers.Take(2..6);
+            Printer.Print(betweenIndexes2To6, nameof(betweenIndexes2To6));
 
             //we can skip the beginning or the end of the range,
             //for example, to take all alfter index 6:
@@ -106,14 +106,14 @@ namespace LinqTutorial.MethodSyntax
             Printer.Print(allAfterIndex6, nameof(allAfterIndex6));
 
             //..or all before index 4:
-            var allBefore4 = numbers.Take(..4);
-            Printer.Print(allBefore4, nameof(allBefore4));
+            var allBeforeIndex4 = numbers.Take(..4);
+            Printer.Print(allBeforeIndex4, nameof(allBeforeIndex4));
 
             //we can also use it with the index from end operator,
             //for example, to take all elements between
             //index 2 and the 3rd index from the end
-            var allBetweenIndex2AndThirdFromEnd = numbers.Take(2..^3);
-            Printer.Print(allBetweenIndex2AndThirdFromEnd, nameof(allBetweenIndex2AndThirdFromEnd));
+            var allBetweenIndex2And3FromEnd = numbers.Take(2..^3);
+            Printer.Print(allBetweenIndex2And3FromEnd, nameof(allBetweenIndex2And3FromEnd));
 
             //TryGetNonEnumeratedCount
             //enables us to get the count of the collection,
