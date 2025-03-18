@@ -48,6 +48,7 @@ namespace LinqTutorial
 
             //OTHERS
             //DotNet6Improvements.Run();
+            //DotNet9Improvements.Run();
 
             Console.ReadKey();
         }
